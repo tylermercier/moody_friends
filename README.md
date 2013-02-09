@@ -10,17 +10,19 @@ moody_friends server
 
     brew install mongo
 
-
 ## Start Mongo
 
     # On Startup
     launchctl load ~/Library/LaunchAgents/homebrew.mxcl.mongodb.plist
 
-## Environment Variables
+or in a separate terminal type `mongod`
+
+## Configuration Environment Variables
 
 Setup twitter auth environment variables by throwing this in your .localrc, .bashrc, or whatevs:
+After creating a Twitter app, set these environment variables:
 
-* `export MOODY_TWITTER_CONSUMER_KEY=???`         - Your Twitter App Consumer Key
-* `export MOODY_TWITTER_CONSUMER_SECRET=???`      - Your Twitter App Consumer Secret
-* `export MOODY_TWITTER_ACCESS_TOKEN=???`         - Your Twitter App Access Token
-* `export MOODY_TWITTER_ACCESS_TOKEN_SECRET=???`  - Your Twitter App Token Secret
+    export MOODY_TWITTER_CONSUMER_KEY=foobar
+    export MOODY_TWITTER_CONSUMER_SECRET=some_secret
+    export MOODY_TWITTER_ACCESS_TOKEN=some_token
+    export MOODY_TWITTER_ACCESS_TOKEN_SECRET=some_token_secret
