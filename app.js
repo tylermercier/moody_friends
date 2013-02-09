@@ -8,6 +8,7 @@ require('coffee-script');
 var express = require('express')
   , routes = require('./routes')
   , user = require('./routes/user')
+  , feed = require('./routes/feed')
   , http = require('http')
   , path = require('path')
   , twit = require('twit')
@@ -43,6 +44,7 @@ app.configure('development', function(){
 
 app.get('/', routes.index);
 app.get('/users', user.list);
+app.get('/feed', feed.feed);
 
 app.get("/test", function (request, response) {
   var SentimentClassifier = require('node-sentiment');
