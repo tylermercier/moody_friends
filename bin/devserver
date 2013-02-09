@@ -1,3 +1,0 @@
-#!/usr/bin/env sh
-
-NODE_ENV=development ./node_modules/node-dev/node-dev app.js

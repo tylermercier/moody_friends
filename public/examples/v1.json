@@ -1,0 +1,7 @@
+{
+  "followers": [
+    { "id": 1, "sentiment": 7 }
+    { "id": 2, "sentiment": 5 }
+    { "id": 3, "sentiment": -4 }
+  ]
+}
