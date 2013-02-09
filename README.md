@@ -12,10 +12,8 @@ moody_friends server
 
 ## Start Mongo
 
-    # On Startup
-    launchctl load ~/Library/LaunchAgents/homebrew.mxcl.mongodb.plist
-
-or in a separate terminal type `mongod`
+    mkdir tmp/db
+    mongod --dbpath=tmp/db
 
 ## Configuration Environment Variables
 
