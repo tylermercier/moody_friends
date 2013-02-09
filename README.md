@@ -18,5 +18,9 @@ moody_friends server
 
 
 ## Configuration
+Setup your twitter environment variables by throwing this in your .localrc, .bashrc, or whatevs:
 
-
+export MOODY_TWITTER_CONSUMER_KEY=foobar
+export MOODY_TWITTER_CONSUMER_SECRET=some_secret
+export MOODY_TWITTER_ACCESS_TOKEN=some_token
+export MOODY_TWITTER_ACCESS_TOKEN_SECRET=some_token_secret
