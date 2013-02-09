@@ -16,6 +16,8 @@ moody_friends server
     # On Startup
     launchctl load ~/Library/LaunchAgents/homebrew.mxcl.mongodb.plist
 
+    or in a separate terminal type `mongod`
+
 
 ## Configuration
 Setup your twitter environment variables by throwing this in your .localrc, .bashrc, or whatevs:
