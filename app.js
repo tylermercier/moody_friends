@@ -8,7 +8,7 @@ require('coffee-script');
 var express = require('express')
   , passport = require('passport')
   , routes = require('./routes')
-  , user = require('./routes/user')
+  , api = require('./routes/api')
   , feed = require('./routes/feed')
   , http = require('http')
   , path = require('path')
@@ -53,6 +53,7 @@ app.get('/', routes.index);
 app.get('/auth/twitter', passport.authenticate('twitter'));
 app.get('/auth/twitter/callback', passport.authenticate('twitter', { successRedirect: '/', failureRedirect: '/' }));
 app.get('/users', user.list);
+app.get('/api', api.index);
 app.get('/feed', feed.feed);
 
 app.get("/test", function (request, response) {

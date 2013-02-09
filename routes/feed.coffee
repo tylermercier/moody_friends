@@ -1,7 +1,5 @@
-exports.feed = (req, res) ->
-  console.log "Test1: #{Twitter}"
+exports.feed = (request, response) ->
   tweets = Twitter.get 'statuses/home_timeline', (err, tweets) ->
-  
-    res.render 'feed',
+    response.render 'feed',
       title: 'Twitter Feed'
       tweets: tweets
