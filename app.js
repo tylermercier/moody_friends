@@ -5,6 +5,7 @@
 require('coffee-script');
 
 var express = require('express')
+  , passport = require('passport')
   , routes = require('./routes')
   , api = require('./routes/api')
   , feed = require('./routes/feed')
@@ -22,7 +23,7 @@ Twitter = new twit({
   consumer_secret:      process.env.MOODY_TWITTER_CONSUMER_SECRET,
   access_token:         process.env.MOODY_TWITTER_ACCESS_TOKEN,
   access_token_secret:  process.env.MOODY_TWITTER_ACCESS_TOKEN_SECRET
-})
+});
 
 var app = express();
 
@@ -51,6 +52,9 @@ app.configure('production', function(){
 });
 
 app.get('/', routes.index);
+app.get('/auth/twitter', passport.authenticate('twitter'));
+app.get('/auth/twitter/callback', passport.authenticate('twitter', { successRedirect: '/', failureRedirect: '/' }));
+app.get('/users', user.list);
 app.get('/api', api.index);
 app.get('/feed', feed.feed);
 

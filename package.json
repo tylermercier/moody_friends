@@ -15,6 +15,8 @@
     "node-sentiment": "git://github.com/martinrue/node-sentiment.git#master",
     "coffee-script": "~1.4.0",
     "mongoose": "~3.5.5",
+    "passport": "~0.1.15",
+    "passport-twitter": "~0.1.4"
   },
   "start": "node app.js"
 }
