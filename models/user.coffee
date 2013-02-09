@@ -1,10 +1,6 @@
-# Virtual Methods 
-
-# Static Methods 
-
-# Instance Methods 
-
-# Plugin Helpers 
+class User
+  @key: ->
+    "moody_friends:#{process.env.NODE_ENV}"
 
 # TODO: Replace with Twitter Strategy
 # passport.use( new LocalStrategy({usernameField: 'email'}, passportLocalStrategy) );
@@ -15,7 +11,7 @@ passportSerializeUser = (user, done) ->
 passportDeserializeUser = (id, done) ->
   model.findById ObjectId(id), (err, user) ->
     
-    #      user._id = user._id.toString();
+    #  user._id = user._id.toString();
     done err, user
 
 mongoose = require("mongoose")
