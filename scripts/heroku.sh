@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-
-heroku config:add MOODY_TWITTER_CONSUMER_KEY=u5FNT1fCM7eECCgksrIUg
-heroku config:add MOODY_TWITTER_CONSUMER_SECRET=P0oFlnMJdblaCffdgYSUXYdCvM089ugfiKYpN2cdfU
-heroku config:add MOODY_TWITTER_ACCESS_TOKEN=28595285-Af8i7OP6uaIMFFimyFqg15rgLyc5R2FtDXHXeinZt
-heroku config:add MOODY_TWITTER_ACCESS_TOKEN_SECRET=qVC1VxMmgwVSZCWJItVCcEAdCKgRHp4td165cOh1als
