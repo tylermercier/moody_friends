@@ -1,9 +1,10 @@
 {
-  "name": "application-name",
+  "name": "moody-friends",
   "version": "0.0.1",
   "private": true,
-  "scripts": {
-    "start": "node app"
+  "engines": {
+    "node": "0.8.14",
+    "npm": "1.1.65"
   },
   "dependencies": {
     "express": "3.1.0",
@@ -11,7 +12,9 @@
     "stylus": "*",
     "twit": "~1.0.12",
     "underscore": "~1.4.4",
+    "node-sentiment": "git://github.com/martinrue/node-sentiment.git#master",
     "coffee-script": "~1.4.0",
-    "konphyg": "~1.2.0"
+    "mongoose": "~3.5.5",
+	"konphyg": "~1.2.0"
   }
 }

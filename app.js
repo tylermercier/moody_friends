@@ -2,7 +2,7 @@
 /**
  * Module dependencies.
  */
- 
+
 require('coffee-script');
 
 var express = require('express')
@@ -50,7 +50,7 @@ app.get("/test", function (request, response) {
   var SentimentClassifier = require('node-sentiment');
   var classifier = new SentimentClassifier;
 
-  var result = classifier.classify('i hate open source');
+  var result = classifier.classify('nodejs is sorta cool');
   response.send(result);
 });
 

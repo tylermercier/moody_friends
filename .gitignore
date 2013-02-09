@@ -6,8 +6,11 @@ lib-cov
 *.out
 *.pid
 *.gz
+tmp
+.rvmrc
 .DS_Store
 Thumbs.db
+node_modules
 
 pids
 logs
