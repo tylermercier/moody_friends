@@ -14,7 +14,13 @@
     "underscore": "~1.4.4",
     "node-sentiment": "git://github.com/martinrue/node-sentiment.git#master",
     "coffee-script": "~1.4.0",
+<<<<<<< HEAD
     "mongoose": "~3.5.5"
   },
   "start": "node app.js"
+=======
+    "mongoose": "~3.5.5",
+	"konphyg": "~1.2.0"
+  }
+>>>>>>> 33722b5f40f9599120742a9ac7e655bb57890c2d
 }

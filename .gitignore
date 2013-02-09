@@ -10,8 +10,10 @@ tmp
 .rvmrc
 .DS_Store
 Thumbs.db
-node_modules
+node_modules/
 
 pids
 logs
 results
+
+/config/twitter.json
