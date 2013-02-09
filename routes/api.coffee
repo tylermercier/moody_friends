@@ -1,8 +1,11 @@
+_ = require('underscore')
+
 exports.index = (request, response) ->
   tweets = Twitter.get 'statuses/home_timeline', (err, tweets) ->
-    result = SentimentEngine.classify(tweets[1].text)
-    result.text = tweets[0].text
-    response.send(result);
+    _.each tweets, (tweet) ->
+      result = SentimentEngine.classify(tweet.text)
+      tweet.sentiment = result
+    response.send(tweets);
 
 
 

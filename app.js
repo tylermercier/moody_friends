@@ -54,7 +54,7 @@ app.configure('production', function(){
 app.get('/', routes.index);
 app.get('/auth/twitter', passport.authenticate('twitter'));
 app.get('/auth/twitter/callback', passport.authenticate('twitter', { successRedirect: '/', failureRedirect: '/' }));
-app.get('/users', user.list);
+// app.get('/users', user.list);
 app.get('/api', api.index);
 app.get('/feed', feed.feed);
 
