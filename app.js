@@ -13,10 +13,7 @@ var express = require('express')
   , path = require('path')
   , mongoUri = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/license'
   , mongoose = require('mongoose')
-  , twit = require('twit')
-  , konphyg = require('konphyg')('./config');
-
-config = konphyg.all();
+  , twit = require('twit');
 
 Twitter = new twit({
   consumer_key:         process.env.MOODY_TWITTER_CONSUMER_KEY,
