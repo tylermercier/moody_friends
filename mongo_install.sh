@@ -1,3 +1,5 @@
+#!/bin/bash
+
 curl http://downloads.mongodb.org/osx/mongodb-osx-x86_64-1.8.5.tgz > /usr/local/src/mongo.tgz
 cd /usr/local/src
 tar -zxvvvf mongo.tgz

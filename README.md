@@ -6,3 +6,10 @@ moody_friends server
     npm install -g supervisor
     supervisor app.js
 
+## Setup Mongo
+
+    bash mongo_install.sh
+
+## Start Mongo
+
+    mongod --dbpath=tmp/db
