@@ -1,7 +1,12 @@
 {
-  "followers": [
-    { "id": 1, "sentiment": 7 }
-    { "id": 2, "sentiment": 5 }
-    { "id": 3, "sentiment": -4 }
+  "following": [
+    {
+      "twitter_id": 63846421,
+      "name": "Brian Sutorius",
+      "screen_name":"bsuto",
+      "profile_url": "http:\/\/a0.twimg.com\/profile_images\/2596248603\/c7mhg7vxl601vcst6jap_normal.jpeg",
+      "sentiment": 7,
+      "source": "twitter"
+    }
   ]
 }
