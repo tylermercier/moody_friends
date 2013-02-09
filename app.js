@@ -31,6 +31,14 @@ app.configure('development', function(){
 app.get('/', routes.index);
 app.get('/users', user.list);
 
+app.get("/test", function (request, response) {
+  var SentimentClassifier = require('node-sentiment');
+  var classifier = new SentimentClassifier;
+
+  var result = classifier.classify('i hate open source');
+  response.send(result);
+});
+
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
 });
