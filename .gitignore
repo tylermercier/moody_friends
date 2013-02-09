@@ -11,6 +11,7 @@ tmp
 .DS_Store
 Thumbs.db
 node_modules/
+scripts/heroku.sh
 
 pids
 logs
