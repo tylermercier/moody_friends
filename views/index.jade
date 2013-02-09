@@ -3,3 +3,11 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
+
+  ul
+    li
+      a(href="/users") Users
+    li
+      a(href="/feed") Feed
+    li
+      a(href="/auth/twitter") Login with Twitter

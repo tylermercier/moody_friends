@@ -1,6 +1,6 @@
 var mongoose = require( 'mongoose' );
 var passport = require( 'passport' );
-var LocalStrategy = require( 'passport-twitter' ).Strategy;
+var TwitterStrategy = require( 'passport-twitter' ).Strategy;
 var Schema = mongoose.Schema;
 var ObjectId = mongoose.Types.ObjectId;
 
