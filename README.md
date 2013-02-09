@@ -9,6 +9,7 @@ moody_friends server
 ## Setup Mongo
 
     bash mongo_install.sh
+    mkdir -p tmp/db
 
 ## Start Mongo
 
