@@ -11,6 +11,7 @@
     "stylus": "*",
     "twit": "~1.0.12",
     "underscore": "~1.4.4",
-    "coffee-script": "~1.4.0"
+    "coffee-script": "~1.4.0",
+    "konphyg": "~1.2.0"
   }
 }
