@@ -15,5 +15,3 @@ node_modules/
 pids
 logs
 results
-
-/config/twitter.json
