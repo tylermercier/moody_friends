@@ -9,16 +9,19 @@ var express = require('express')
   , routes = require('./routes')
   , user = require('./routes/user')
   , http = require('http')
-  , path = require('path');
+  , path = require('path')
+  , mongoUri = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/license'
+  , mongoose = require('mongoose');
 
 var app = express();
+
+mongoose.connect(mongoUri);
 
 app.configure(function(){
   app.set('port', process.env.PORT || 3000);
   app.set('views', __dirname + '/views');
   app.set('view engine', 'jade');
   app.use(express.favicon());
-  app.use(express.logger('dev'));
   app.use(express.bodyParser());
   app.use(express.methodOverride());
   app.use(app.router);
@@ -27,6 +30,12 @@ app.configure(function(){
 });
 
 app.configure('development', function(){
+  app.use(express.logger('dev'));
+  app.use( errorHandler( { dumpExceptions: true, showStack: true } ) );
+});
+
+app.configure('production', function(){
+  app.use(express.logger());
   app.use(express.errorHandler());
 });
 
