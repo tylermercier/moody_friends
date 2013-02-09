@@ -7,7 +7,7 @@ require('coffee-script');
 
 var express = require('express')
   , routes = require('./routes')
-  , user = require('./routes/user')
+  , api = require('./routes/api')
   , feed = require('./routes/feed')
   , http = require('http')
   , path = require('path')
@@ -49,7 +49,7 @@ app.configure('production', function(){
 });
 
 app.get('/', routes.index);
-app.get('/users', user.list);
+app.get('/api', api.index);
 app.get('/feed', feed.feed);
 
 app.get("/test", function (request, response) {
