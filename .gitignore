@@ -12,3 +12,5 @@ Thumbs.db
 pids
 logs
 results
+
+/config/twitter.json
