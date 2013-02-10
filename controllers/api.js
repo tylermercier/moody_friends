@@ -1,4 +1,5 @@
 var app;
+var generateFeed = require('../models/feed').generateFeed
 
 exports.init = function init(_app){
   app = _app;
@@ -19,4 +20,23 @@ exports.index = function(request, response, next) {
     
     return response.send(feed);
   });
+};
+
+exports.feed = function(request, response) {
+  var params = {};
+
+  app._.each(request.body.authString.split('&'), function(param){
+    var key   = param.split('=')[0],
+        value = param.split('=')[1];
+    params[key] = value;
+  });
+
+  var accessToken       = params.oauth_token,
+      accessTokenSecret = params.oauth_token_secret;
+
+  var client = app.twitterClient.create(accessToken, accessTokenSecret);
+  var feedJSON = client.get('statuses/home_timeline', function(err, tweets) {
+    return response.send( new generateFeed( tweets ) );
+  });
+
 };
