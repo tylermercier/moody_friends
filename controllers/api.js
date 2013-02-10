@@ -35,7 +35,7 @@ exports.feed = function(request, response) {
       accessTokenSecret = params.oauth_token_secret;
 
   var client = app.twitterClient.create(accessToken, accessTokenSecret);
-  var feedJSON = client.get('statuses/home_timeline', {count: 200}, function(err, tweets) {
+  var feedJSON = client.get('statuses/home_timeline', function(err, tweets) {
     return response.send( new generateFeed( tweets ) );
   });
 
