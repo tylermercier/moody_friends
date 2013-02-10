@@ -2,6 +2,8 @@ var twit = require('twit');
 
 exports.feed = function(request, response) {
 
+  console.log(request);
+
   // TODO: Refactor this
   if (request.user){
     var token       = request.user.twitter_access_token,
