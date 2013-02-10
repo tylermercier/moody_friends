@@ -14,9 +14,10 @@ exports.load = function(app) {
     app.set('view engine', 'jade');
     app.use(express.favicon());
     app.use(express.cookieParser('magic_mike'));
-    app.use(express.session());
+    app.use(express.session({ secret:'megaphone'}));
     app.use(express.bodyParser());
     app.use(express.methodOverride());
+    app.use(express.logger('dev'));
 
     // Setup passport
     app.use(passport.initialize());
