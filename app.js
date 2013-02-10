@@ -37,9 +37,8 @@ app.configure(function(){
   app.use(passport.session());
 
   // Pass the user to every view
-  app.use(function(req, res, next){
-    console.log(req.user);
-    res.locals.user = req.user;
+  app.use(function(request, result, next){
+    result.locals.user = request.user;
     next();
   });
 

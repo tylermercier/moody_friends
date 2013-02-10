@@ -17,7 +17,6 @@ exports.feed = function(request, response) {
   // END TODO: Refactor
 
   var tweets = Twitter.get('statuses/home_timeline', function(err, tweets) {
-    console.log(tweets);
     response.render('feed', {
       title: 'Twitter Feed',
       tweets: tweets

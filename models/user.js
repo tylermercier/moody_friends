@@ -54,10 +54,10 @@ passport.use(new TwitterStrategy({
   callbackURL: 'http://127.0.0.1:3000/auth/twitter/callback'
 }, function(token, tokenSecret, profile, done) {
   process.nextTick(function() {
-    console.log(profile);
+    console.log(profile.username);
 
     model.findOne({
-      twitter_handle: profile.screen_name
+      twitter_handle: profile.username
     }, function(err, user) {
       var new_user;
       if (err) {
@@ -65,13 +65,16 @@ passport.use(new TwitterStrategy({
       }
       if (!user) {
         new_user = new model({
-          twitter_id: profile.id_str,
-          name: profile.name,
-          twitter_handle: profile.screen_name,
+          twitter_id: profile.id,
+          name: profile.displayName,
+          twitter_handle: profile.username,
           profile_img: profile.profile_image_url
         });
+        console.log("New User instance: " + new_user);
+
         new_user.save(function(err, user) {
           if (err) {
+            console.log("Error on Save:" + err);
             return done(err, false);
           }
           done(err, user);
