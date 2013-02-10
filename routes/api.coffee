@@ -1,31 +1,24 @@
 _ = require('underscore')
 
 exports.index = (request, response) ->
+  measureSentiment = (text) ->
+    sentiment = SentimentEngine.classify(text)
+    return 0 if sentiment.sentiment == "neutral"
+    return sentiment.probability if sentiment.sentiment == "positive"
+    -1 * sentiment.probability
+
   tweets = Twitter.get 'statuses/home_timeline', (err, tweets) ->
-    _.each tweets, (tweet) ->
-      result = SentimentEngine.classify(tweet.text)
-      tweet.sentiment = result
-    response.send(tweets);
+    feed = _.map tweets, (tweet) ->
+      {
+        twitter_id: tweet.user.id
+        name: tweet.user.name
+        screen_name: tweet.user.screen_name
+        profile_url: tweet.user.profile_image_url
+        source: 'twitter'
+        tweet_id: tweet.id
+        text: tweet.text
+        created_at: tweet.created_at
+        sentiment: measureSentiment(tweet.text)
+      }
 
-
-
-
-# {
-#   "following": [
-#     {
-#       "twitter_id": 63846421,
-#       "name": "Brian Sutorius",
-#       "screen_name":"bsuto",
-#       "profile_url": "http:\/\/a0.twimg.com\/profile_images\/2596248603\/c7mhg7vxl601vcst6jap_normal.jpeg",
-#       "sentiment": 7,
-#       "source": "twitter",
-#       "tweets": [
-#         {
-#           "tweet_id": 1231231,
-#           "created_at": "Tue Feb 21 21:00:07 +0000 2012",
-#           "profile_url": "http:\/\/a0.twimg.com\/profile_images\/2596248603\/c7mhg7vxl601vcst6jap_normal.jpeg",
-#           "favorited": false,
-#           "retweeted": false,
-#           "sentiment": 1,
-#           "text": "Zomg cat bombs!"
-#         },
+    response.send(feed);
