@@ -1,6 +1,6 @@
 var twit = require('twit');
 
-exports.feed = function(request, response) {
+exports.index = function(request, response) {
 
   console.log(request);
 
