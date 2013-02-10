@@ -2,6 +2,11 @@
   "name": "moody-friends",
   "version": "0.0.1",
   "private": true,
+  "homepage" : "http://moodyfriends.heroku.com",
+  "repository" : {
+    "type" : "git",
+    "url" : "git@github.com:tylermercier/moody_friends.git"
+  },
   "engines": {
     "node": "0.8.14",
     "npm": "1.1.65"
