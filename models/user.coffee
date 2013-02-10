@@ -22,6 +22,7 @@ name = 'user'
 Schema = mongoose.Schema
 ObjectId = mongoose.Types.ObjectId
 schema = new Schema(
+  screenName: String
   firstName: String
   lastName: String
   password: String
@@ -34,20 +35,22 @@ schema.virtual("displayName").get ->
 passport.use new TwitterStrategy
   consumerKey: process.env.MOODY_TWITTER_CONSUMER_KEY,
   consumerSecret: process.env.MOODY_TWITTER_CONSUMER_SECRET,
-  callbackURL: 'http://moodyfriends.heroku.com/auth/twitter/callback'
+  callbackURL: 'http://127.0.0.1:3000/auth/twitter/callback'
+  # callbackURL: 'http://moodyfriends.heroku.com/auth/twitter/callback'
   ,
   (token, tokenSecret, profile, done) ->
     process.nextTick ->
-      done(null, profile)
-      # model.findOne
-      #   'email': profile.email,
-      #   (err, user) ->
-      #     return done(err, false) if err
-      #     unless user
-      #       console.log('Hah bitches!')
-            # Save new user.
-            # RETURN!
-          # done(null, user)
+      console.log(profile)
+      model.findOne
+        'email': profile.email,
+        (err, user) ->
+          return done(err, false) if err
+          unless user
+            model.save profile,
+              (err, user) ->
+                return done(err, false) if err
+                return done(err, user)
+          done(null, user)
 
 passport.serializeUser passportSerializeUser
 passport.deserializeUser passportDeserializeUser

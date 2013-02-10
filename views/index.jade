@@ -12,4 +12,7 @@ block content
     li
       a(href="/api") API
     li
-      a(href="/auth/twitter") Login with Twitter
+      - if (user)
+        | You are logged in as #{user.name}
+      - else
+        a(href="/auth/twitter") Login with Twitter

@@ -42,6 +42,14 @@ app.configure(function(){
   app.use(express.methodOverride());
   app.use(passport.initialize());
   app.use(passport.session());
+
+  // Pass the user to every view
+  app.use(function(req, res, next){
+    console.log(req.user);
+    res.locals.user = req.user;
+    next();
+  });
+
   app.use(app.router);
   app.use(require('stylus').middleware(__dirname + '/public'));
   app.use(express.static(path.join(__dirname, 'public')));
