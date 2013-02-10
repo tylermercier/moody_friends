@@ -17,6 +17,8 @@ exports.load = function(app) {
     app.use(express.session());
     app.use(express.bodyParser());
     app.use(express.methodOverride());
+
+    // Setup passport
     app.use(passport.initialize());
     app.use(passport.session());
 
