@@ -51,34 +51,25 @@ schema.virtual("displayName").get(function() {
 passport.use(new TwitterStrategy({
   consumerKey:    process.env.MOODY_TWITTER_CONSUMER_KEY,
   consumerSecret: process.env.MOODY_TWITTER_CONSUMER_SECRET,
-  callbackURL:    'http://127.0.0.1:3000/auth/twitter/callback'
+  callbackURL: 'http://127.0.0.1:3000/auth/twitter/callback'
 }, function(token, tokenSecret, profile, done) {
-
-  console.log(profile._json);
-  console.log("Token:" + token);
-  console.log("Token Secret:" + tokenSecret);
-
   process.nextTick(function() {
+    console.log(profile.username);
+
     model.findOne({
       twitter_handle: profile.username
     }, function(err, user) {
+      var new_user;
       if (err) {
         return done(err, false);
       }
-
-      var new_user,
-          new_attributes = {
-        twitter_id: profile.id,
-        name: profile.displayName,
-        twitter_handle: profile.username,
-        profile_img: profile._json.profile_image_url,
-        twitter_access_token: token,
-        twitter_access_token_secret: tokenSecret
-      };
-
-      // Create
       if (!user) {
-        new_user = new model(new_attributes);
+        new_user = new model({
+          twitter_id: profile.id,
+          name: profile.displayName,
+          twitter_handle: profile.username,
+          profile_img: profile.profile_image_url
+        });
         console.log("New User instance: " + new_user);
 
         new_user.save(function(err, user) {
@@ -89,16 +80,6 @@ passport.use(new TwitterStrategy({
           done(err, user);
         });
       }
-
-      // Update
-      user.update(new_attributes, function(err, user) {
-        if (err) {
-          console.log("Error on Update:" + err);
-          return done(err, false);
-        }
-      });
-
-      console.log("Found user: @" + user.twitter_handle);
       return done(null, user);
     });
   });
