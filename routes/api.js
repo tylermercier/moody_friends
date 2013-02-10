@@ -5,8 +5,8 @@ exports.index = function(request, response) {
   var Twitter = new twit({
     consumer_key: twitterConsumerKey,
     consumer_secret: twitterConsumerSecret,
-    access_token: request.user.access_token,
-    access_token_secret: request.user.access_token_secret
+    access_token: request.user.twitter_access_token,
+    access_token_secret: request.user.twitter_access_token_secret
   });
 
   var measureSentiment = function(text) {
