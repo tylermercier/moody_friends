@@ -1,19 +1,15 @@
 _ = require('underscore')
 
 exports.index = (request, response) ->
-  getSentiment = (text) ->
+  measureSentiment = (text) ->
     sentiment = SentimentEngine.classify(text)
-    if sentiment.sentiment == "neutral"
-      return 0
-    else
-      multiplier = 1
-      multiplier = -1 unless sentiment.sentiment == "positive"
-      return multiplier * sentiment.probability
+    return 0 if sentiment.sentiment == "neutral"
+    return sentiment.probability if sentiment.sentiment == "positive"
+    -1 * sentiment.probability
 
   tweets = Twitter.get 'statuses/home_timeline', (err, tweets) ->
-    feed = []
-    _.each tweets, (tweet) ->
-      update =
+    feed = _.map tweets, (tweet) ->
+      {
         twitter_id: tweet.user.id
         name: tweet.user.name
         screen_name: tweet.user.screen_name
@@ -22,8 +18,7 @@ exports.index = (request, response) ->
         tweet_id: tweet.id
         text: tweet.text
         created_at: tweet.created_at
-        sentiment: getSentiment(tweet.text)
-
-      feed.push(update)
+        sentiment: measureSentiment(tweet.text)
+      }
 
     response.send(feed);
