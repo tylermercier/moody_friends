@@ -1,4 +1,4 @@
-var sentiment = require('../functions/sentiment');
+var sentiment = require('../lib/sentiment');
 
 function Update(tweet) {
   this.twitter_id = tweet.user.id,
