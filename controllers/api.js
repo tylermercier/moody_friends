@@ -25,7 +25,7 @@ exports.index = function(request, response, next) {
 exports.feed = function(request, response) {
   var params = {};
 
-  console.log(request.body.authString);
+  console.log(request.body, request.body.authString);
 
   app._.each(request.body.authString.split('&'), function(param){
     var key   = param.split('=')[0],
@@ -34,7 +34,7 @@ exports.feed = function(request, response) {
   });
 
   var accessToken       = params.oauth_token,
-      accessTokenSecret = params.oauth_token_secret;
+      accessTokenSecret = params.oauth_token_secret || "";
 
   console.log(params);
   console.log(accessToken);
