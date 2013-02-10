@@ -1,4 +1,3 @@
-
 /**
  * Module dependencies.
  */
@@ -16,7 +15,10 @@ var express = require('express')
   , path = require('path')
   , mongoUri = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/license'
   , mongoose = require('mongoose')
-  , twit = require('twit');
+  , twit = require('twit')
+  , nodeSentiment = require('node-sentiment');
+
+SentimentEngine = new nodeSentiment();
 
 Twitter = new twit({
   consumer_key:         process.env.MOODY_TWITTER_CONSUMER_KEY,
@@ -58,7 +60,7 @@ app.configure('production', function(){
 app.get('/', routes.index);
 app.get('/auth/twitter', passport.authenticate('twitter'));
 app.get('/auth/twitter/callback', passport.authenticate('twitter', { successRedirect: '/', failureRedirect: '/' }));
-app.get('/users', user.list);
+// app.get('/users', user.list);
 app.get('/api', api.index);
 app.get('/feed', feed.feed);
 
