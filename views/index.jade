@@ -16,6 +16,8 @@ block content
         | You are logged in as #{user.name}
         ul
           li
-            img(src='#{user.profile_img}')
+            img(src='#{user.picture}')
+          li
+            a(href="/logout") Logout
       - else
         a(href="/auth/twitter") Login with Twitter

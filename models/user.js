@@ -12,7 +12,7 @@ exports.init = function init(_app){
   name = 'user';
 
   Schema = app.mongoose.Schema;
-  ObjectId = app.mongoose.ObjectId;
+  ObjectId = app.mongoose.Types.ObjectId;
 
   var twitterOptions = {
     consumerKey:    process.env.MOODY_TWITTER_CONSUMER_KEY,
@@ -21,22 +21,22 @@ exports.init = function init(_app){
   };
 
   schema = new Schema({
-    twitter_id: String,
-    twitter_handle: String,
+    twitterID: String,
+    twitterHandle: String,
     name: String,
     email: String,
-    profile_img: String,
-    twitter_access_token: String,
-    twitter_access_token_secret: String,
+    picture: String,
+    twitterAccessToken: String,
+    twitterAccessTokenSecret: String,
     friends: []
   });
 
   /* Indexes */
 
-  schema.index({
-    email: 1,
-    background: true
-  });
+  // schema.index({
+  //   email: 1,
+  //   background: true
+  // });
 
   app.passport.serializeUser(passportSerializeUser);
   app.passport.deserializeUser(passportDeserializeUser);
