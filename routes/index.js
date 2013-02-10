@@ -1,7 +1,7 @@
 var app;
 
-exports.init = function init(app) {
-  app = app;
+exports.init = function init(_app) {
+  app = _app;
   
   // Main home route
   app.get('/', function(request, response, next){

@@ -1,9 +1,11 @@
 var app;
 var model;
 
-exports.init = function init(app){
-  app = app;
+exports.init = function init(_app){
+  app = _app;
   model = app.models.user.model;
+
+  return this;
 };
 
 exports.index = function(request, response, next) {

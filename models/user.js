@@ -7,8 +7,8 @@ var name;
 var model;
 
 
-exports.init = function init(app){
-  app = app;
+exports.init = function init(_app){
+  app = _app;
   name = 'user';
 
   Schema = app.mongoose.Schema;

@@ -1,7 +1,7 @@
 var app;
 
-exports.init = function init(app) {
-  app = app;
+exports.init = function init(_app) {
+  app = _app;
 
   var twitter = {
     scope: ['email', 'user_birthday']

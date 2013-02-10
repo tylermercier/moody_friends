@@ -1,7 +1,9 @@
 var app;
 
-exports.init = function init(app){
-  app = app;
+exports.init = function init(_app){
+  app = _app;
+
+  return this;
 };
 
 var Update = require('../models/update').Update;

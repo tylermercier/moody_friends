@@ -14,8 +14,6 @@ require('./models').init(app);
 
 app.mongoose.connect(mongoUri);
 
-var SentimentEngine = new app.sentiment();
-
 app.configure(function(){
   app.set('port', process.env.PORT || 3000);
   app.set('views', __dirname + '/views');
