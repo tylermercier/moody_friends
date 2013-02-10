@@ -17,7 +17,7 @@ exports.index = function(request, response, next) {
     var feed = app._.map(tweets, function(tweet) {
       return new Update(tweet);
     });
-    
+
     return response.send(feed);
   });
 };
