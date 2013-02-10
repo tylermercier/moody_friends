@@ -22,11 +22,13 @@ name = 'user'
 Schema = mongoose.Schema
 ObjectId = mongoose.Types.ObjectId
 schema = new Schema(
-  screenName: String
-  firstName: String
-  lastName: String
-  password: String
+  twitter_id: String
+  twitter_handle: String
+  name: String
   email: String
+  profile_img: String
+  twitter_access_token: String
+  twitter_access_token_secret: String
   friends: []
 )
 schema.virtual("displayName").get ->
@@ -42,15 +44,21 @@ passport.use new TwitterStrategy
     process.nextTick ->
       console.log(profile)
       model.findOne
-        'email': profile.email,
+        twitter_handle: profile.screen_name,
         (err, user) ->
           return done(err, false) if err
           unless user
-            model.save profile,
-              (err, user) ->
-                return done(err, false) if err
-                return done(err, user)
-          done(null, user)
+          # No user existing user then we create user
+            new_user = new model
+              twitter_id: profile.id_str
+              name: profile.name
+              twitter_handle: profile.screen_name
+              profile_img: profile.profile_image_url
+
+            new_user.save (err, user) ->
+              return done(err, false) if err
+              return done(err, user)
+          return done(null, user)
 
 passport.serializeUser passportSerializeUser
 passport.deserializeUser passportDeserializeUser
