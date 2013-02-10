@@ -25,6 +25,8 @@ exports.index = function(request, response, next) {
 exports.feed = function(request, response) {
   var params = {};
 
+  console.log(request.body.authString);
+
   app._.each(request.body.authString.split('&'), function(param){
     var key   = param.split('=')[0],
         value = param.split('=')[1];
