@@ -20,9 +20,6 @@ var express = require('express')
 
 SentimentEngine = new nodeSentiment();
 
-var twitterConsumerKey    = process.env.MOODY_TWITTER_CONSUMER_KEY,
-    twitterConsumerSecret = process.env.MOODY_TWITTER_CONSUMER_SECRET;
-
 var app = express();
 
 mongoose.connect(mongoUri);

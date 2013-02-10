@@ -23,7 +23,6 @@ passportDeserializeUser = function(id, done) {
 };
 
 mongoose = require("mongoose");
-
 passport = require("passport");
 
 TwitterStrategy = require("passport-twitter").Strategy;
@@ -50,13 +49,14 @@ schema.virtual("displayName").get(function() {
 });
 
 passport.use(new TwitterStrategy({
-  consumerKey: process.env.MOODY_TWITTER_CONSUMER_KEY,
+  consumerKey:    process.env.MOODY_TWITTER_CONSUMER_KEY,
   consumerSecret: process.env.MOODY_TWITTER_CONSUMER_SECRET,
   callbackURL: 'http://127.0.0.1:3000/auth/twitter/callback'
 }, function(token, tokenSecret, profile, done) {
-  return process.nextTick(function() {
+  process.nextTick(function() {
     console.log(profile);
-    return model.findOne({
+
+    model.findOne({
       twitter_handle: profile.screen_name
     }, function(err, user) {
       var new_user;
@@ -74,7 +74,7 @@ passport.use(new TwitterStrategy({
           if (err) {
             return done(err, false);
           }
-          return done(err, user);
+          done(err, user);
         });
       }
       return done(null, user);
