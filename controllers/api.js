@@ -23,22 +23,19 @@ exports.index = function(request, response, next) {
 };
 
 exports.feed = function(request, response) {
-  var params = {};
+  console.log(request.body);
 
-  console.log(request.body, request.body.authString);
+  // app._.each(request.body.authString.split('&'), function(param){
+  //   var key   = param.split('=')[0],
+  //       value = param.split('=')[1];
+  //   params[key] = value;
+  // });
 
-  app._.each(request.body.authString.split('&'), function(param){
-    var key   = param.split('=')[0],
-        value = param.split('=')[1];
-    params[key] = value;
-  });
+  var accessToken       = request.body.oauth_token || "",
+      accessTokenSecret = request.body.oauth_token_secret || "";
 
-  var accessToken       = params.oauth_token,
-      accessTokenSecret = params.oauth_token_secret || "";
-
-  console.log(params);
-  console.log(accessToken);
-  console.log(accessTokenSecret);
+  console.log("token " + accessToken);
+  console.log("secret" + accessTokenSecret);
 
   var client = app.twitterClient.create(accessToken, accessTokenSecret);
   var feedJSON = client.get('statuses/home_timeline', { count: 200 }, function(err, tweets) {
