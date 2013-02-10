@@ -15,14 +15,21 @@ exports.index = function(request, response) {
     return -1 * sentiment.probability;
   };
 
-  var Twitter = new twit({
-    consumer_key:    process.env.MOODY_TWITTER_CONSUMER_KEY,
-    consumer_secret: process.env.MOODY_TWITTER_CONSUMER_SECRET,
-    access_token:    request.user.twitter_access_token,
-    access_token_secret: request.user.twitter_access_token_secret
-  });
+  // TODO: Refactor this
+  if (request.user){
+    var token       = request.user.twitter_access_token,
+        tokenSecret = request.user.twitter_access_token_secret;
+  }
 
-  Twitter.get('statuses/home_timeline', function(err, tweets) {
+  var Twitter = new twit({
+    consumer_key: process.env.MOODY_TWITTER_CONSUMER_KEY,
+    consumer_secret: process.env.MOODY_TWITTER_CONSUMER_SECRET,
+    access_token: token || process.env.MOODY_TWITTER_ACCESS_TOKEN,
+    access_token_secret: tokenSecret || process.env.MOODY_TWITTER_ACCESS_TOKEN_SECRET
+  })
+  // END TODO: Refactor
+
+  var tweets = Twitter.get('statuses/home_timeline', function(err, tweets) {
     var feed = _.map(tweets, function(tweet) {
       return {
         twitter_id: tweet.user.id,
