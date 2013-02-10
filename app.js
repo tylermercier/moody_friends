@@ -10,6 +10,8 @@ var express = require('express')
   , routes = require('./routes')
   , api = require('./routes/api')
   , feed = require('./routes/feed')
+  , user = require('./routes/user')
+  , userModel = require('./models/user')
   , http = require('http')
   , path = require('path')
   , mongoUri = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/license'
@@ -32,8 +34,12 @@ app.configure(function(){
   app.set('views', __dirname + '/views');
   app.set('view engine', 'jade');
   app.use(express.favicon());
+  app.use(express.cookieParser('magic_mike'));
+  app.use(express.session());
   app.use(express.bodyParser());
   app.use(express.methodOverride());
+  app.use(passport.initialize());
+  app.use(passport.session());
   app.use(app.router);
   app.use(require('stylus').middleware(__dirname + '/public'));
   app.use(express.static(path.join(__dirname, 'public')));

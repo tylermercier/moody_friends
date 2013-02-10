@@ -1,5 +1,5 @@
-exports.list = (req, res) ->
+exports.list = (request, response) ->
 
-  res.render 'index',
+  response.render 'index',
     title: 'yo yo'
-  # res.send("respond with a resource");
+  # response.send("respond with a resource");

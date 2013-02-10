@@ -1,3 +1,3 @@
 exports.index = (request, response) ->
-  res.render 'index',
+  response.render 'index',
     title: 'Moody Friends'
