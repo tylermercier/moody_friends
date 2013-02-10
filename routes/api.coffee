@@ -13,17 +13,16 @@ exports.index = (request, response) ->
   tweets = Twitter.get 'statuses/home_timeline', (err, tweets) ->
     feed = []
     _.each tweets, (tweet) ->
-      update = {}
-
-      update.twitter_id = tweet.user.id
-      update.name = tweet.user.name
-      update.screen_name = tweet.user.screen_name
-      update.profile_url = tweet.user.profile_image_url
-      update.source = 'twitter'
-      update.tweet_id = tweet.id
-      update.text = tweet.text
-      update.created_at = tweet.created_at
-      update.sentiment = getSentiment(tweet.text)
+      update =
+        twitter_id: tweet.user.id
+        name: tweet.user.name
+        screen_name: tweet.user.screen_name
+        profile_url: tweet.user.profile_image_url
+        source: 'twitter'
+        tweet_id: tweet.id
+        text: tweet.text
+        created_at: tweet.created_at
+        sentiment: getSentiment(tweet.text)
 
       feed.push(update)
 
