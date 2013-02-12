@@ -2,22 +2,8 @@ extends layout
 
 block content
   h1= title
-  p Welcome to #{title}
+  p Welcome
 
   ul
     li
-      a(href="/users") Users
-    li
-      a(href="/feed") Feed
-    li
-      a(href="/api") API
-    li
-      - if (user)
-        | You are logged in as #{user.name}
-        ul
-          li
-            img(src='#{user.picture}')
-          li
-            a(href="/logout") Logout
-      - else
-        a(href="/auth/twitter") Login with Twitter
+      a(href="/#") API
