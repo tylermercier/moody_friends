@@ -6,16 +6,16 @@ var sentiment = require('../lib/sentiment');
 // Return JSON.
 
 function generateFeed(tweets) {
-  var users = groupStatusesByUser( tweets );
-  return calculateTotalSentiment( users );
+  var users = groupStatusesByUser(tweets);
+  return calculateTotalSentiment(users);
 };
 
-function groupStatusesByUser( tweets ) {
-  var users = _.groupBy( tweets, function( tweet ) {
+function groupStatusesByUser(tweets) {
+  var users = _.groupBy(tweets, function(tweet) {
     return tweet.user.id;
   });
 
-  return _.map( users, function (user) {
+  return _.map( users, function(user) {
     return {
       "twitter_id": user[0].user.id,
       "name": user[0].user.name,
@@ -23,7 +23,7 @@ function groupStatusesByUser( tweets ) {
       "profile_url": user[0].user.profile_image_url,
       "sentiment": null,
       "source": "twitter",
-      "tweets": _.map( user, function (tweet) {
+      "tweets": _.map(user, function(tweet) {
         return {
           "tweet_id": tweet.id,
           "created_at": tweet.created_at,
@@ -38,14 +38,14 @@ function groupStatusesByUser( tweets ) {
   } )
 }
 
-function calculateTotalSentiment( users ) {
-  _.each( users, function( user ) {
-    sentiments = _.map( user.tweets, function( tweet ) {
+function calculateTotalSentiment(users) {
+  _.each(users, function(user) {
+    sentiments = _.map(user.tweets, function(tweet) {
       return tweet.sentiment;
     });
 
     var total = 0;
-    _.each( sentiments, function(sentiment) {
+    _.each(sentiments, function(sentiment) {
       total += sentiment;
     });
 
