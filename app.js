@@ -1,9 +1,9 @@
 var http = require('http');
 var express = require('express');
-var app = express();
-
 var mongoose = require('mongoose');
 var passport = require('passport');
+
+var app = express();
 
 require('./config')(app, express, mongoose, passport);
 require('./routes')(app, mongoose, passport);
