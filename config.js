@@ -21,11 +21,11 @@ module.exports = function(app, express, mongoose, passport) {
   //env specific config
   app.configure('development', function(){
     app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
-    mongoose.connect('mongodb://localhost/nodemvr');
+    mongoose.connect('mongodb://localhost/moody_friends');
   });
 
   app.configure('production', function(){
     app.use(express.errorHandler());
-    mongoose.connect('mongodb://flame.mongohq.com:27087/nodemvr');
+    mongoose.connect('mongodb://flame.mongohq.com:27087/moody_friends');
   });
 };
