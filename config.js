@@ -13,6 +13,8 @@ module.exports = function(app, express, mongoose, passport) {
     app.use(app.router);
     app.use(express.static(__dirname + '/public'));
 
+
+
     // Setup passport
     app.use(passport.initialize());
     app.use(passport.session());
@@ -27,5 +29,10 @@ module.exports = function(app, express, mongoose, passport) {
   app.configure('production', function(){
     app.use(express.errorHandler());
     mongoose.connect('mongodb://flame.mongohq.com:27087/moody_friends');
+    // error handling
+    app.use(function(err, req, res, next){
+      console.error(err.stack);
+      res.send(500, 'Something broke!');
+    });
   });
 };

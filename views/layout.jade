@@ -1,7 +1,28 @@
-doctype 5
+!!!
 html
   head
-    title= title
-    link(rel='stylesheet', href='/css/style.css')
-  body
-    block content
+    title= 'Node.js Express Template'
+    link(rel='stylesheet', href='//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap.min.css')
+    link(rel='stylesheet', href='//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap-responsive.min.css')
+    script(src='//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js')
+
+    body
+      div.navbar.navbar-fixed-top
+        div.navbar-inner
+          div.container
+            a(data-toggle='collapse',data-target='.nav-collapse').btn.btn-navbar
+              span.icon-bar
+              span.icon-bar
+              span.icon-bar
+              a(href='/').brand 'Node.js Express Template'
+              div.nav-collapse
+                ul.nav
+                  li
+                    a(href='/users') User
+                  li
+                    a(href='/users/new') Add User
+                  li
+                    a(href='#') Api
+
+    div.container(style='margin-top: 60px')
+      block content

@@ -1,19 +1,10 @@
-extends layout
+extends ../layout
 
 block content
-  div.hero-unit
-    h1 Node.js Express Template
-    p This is a very simple starting point for Node.js Express.
-
   div.content
     div.row
       div.span12
-        ul.unstyled.indent
-          each user in users
-            li
-              a(href="users/#{user._id}")  #{user.name}
-    div.row
-      div.span12
+        h2 Add a new test doc
         p
           form(name='form-testdoc', method='POST', action='/users').form
             input(type='hidden', name='_method', value='POST')

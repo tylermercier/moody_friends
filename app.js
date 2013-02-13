@@ -8,6 +8,7 @@ var app = express();
 require('./config')(app, express, mongoose, passport);
 require('./routes')(app, mongoose, passport);
 
-http.createServer(app).listen(process.env.PORT || 3000, function(){
+var server = http.createServer(app)
+server.listen(process.env.PORT || 3000, function(){
   console.log('server started');
 });
