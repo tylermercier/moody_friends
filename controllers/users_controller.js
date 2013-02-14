@@ -2,18 +2,17 @@ module.exports = function(app, userModel){
   function Controller() {}
 
   Controller.prototype.index = function(req, res) {
-    userModel.find({}, function(err, docs){
+    userModel.find({}, function(err, users){
       res.render('users/index.jade', {
-        layout: 'layout.jade',
-        users: docs
+        users: users
       });
     });
   }
 
   Controller.prototype.show = function(req, res){
-    userModel.findById(req.params.id, function(err, doc){
+    userModel.findById(req.params.id, function(err, user){
       res.render('users/show.jade', {
-        user: doc
+        user: user
       });
     });
   }
@@ -24,7 +23,7 @@ module.exports = function(app, userModel){
 
   Controller.prototype.create = function(req, res){
     var user = new userModel();
-    user.name = req.param('doc');
+    user.name = req.param('name');
     user.date = new Date();
     user.save(function(error) {
       if (error) {
