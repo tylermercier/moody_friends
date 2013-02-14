@@ -6,6 +6,10 @@ moody_friends server
     npm install -g nodemon
     nodemon app.js
 
+## Run tests
+
+    cake test
+
 ## Setup Mongo
 
     brew install mongo
