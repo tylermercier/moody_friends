@@ -5,7 +5,10 @@ var passport = require('passport');
 
 var app = express();
 
-require('./config')(app, express, mongoose, passport);
+var Config = require('./config');
+var configuration = new Config();
+configuration.init(app, express, passport, mongoose);
+
 require('./routes')(app, mongoose, passport);
 
 var server = http.createServer(app);

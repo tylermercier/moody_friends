@@ -16,8 +16,10 @@
     "test": "cake test"
   },
   "devDependencies": {
+    "mocha": "~1.1.0",
     "chai": "~1.0.3",
-    "mocha": "~1.1.0"
+    "sinon": "1.5.2",
+    "should": "1.2.1"
   },
   "dependencies": {
     "express": "3.1.0",

@@ -1,6 +1,6 @@
 module.exports = function(app, twitterClient){
   var generateFeed = require('../models/feed').generateFeed;
-  var Update = require('../models/update').Update;
+  var Update = require('../models/update');
 
   function Controller() {}
 

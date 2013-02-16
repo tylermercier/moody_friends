@@ -1,5 +1,7 @@
 var sentiment = require('../lib/sentiment');
 
+exports = module.exports = Update;
+
 function Update(tweet) {
   this.twitter_id = tweet.user.id,
   this.name = tweet.user.name,
@@ -11,5 +13,3 @@ function Update(tweet) {
   this.created_at = tweet.created_at,
   this.sentiment = sentiment.measure(tweet.text)
 };
-
-exports.Update = Update;
