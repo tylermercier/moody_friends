@@ -5,7 +5,7 @@ task "compile", "compile src coffee into lib js and copy over .dat file", ->
     throw err if err
     console.log "-> coffeescript compiled."
 
-task "spec", "run specs", ->
+task "spec", "run all mocha tests", ->
   exec "NODE_ENV=test
     ./node_modules/.bin/mocha
     --compilers coffee:coffee-script

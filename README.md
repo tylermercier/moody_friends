@@ -6,9 +6,9 @@ moody_friends server
     npm install -g nodemon
     nodemon app.js
 
-## Run tests
+## Run all tests
 
-    cake test
+    cake spec
 
 ## Setup Mongo
 
