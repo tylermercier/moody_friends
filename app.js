@@ -1,17 +1,9 @@
-var http = require('http');
-var express = require('express');
-var mongoose = require('mongoose');
-var passport = require('passport');
+var app = require('express')();
+require('./config/')(app);
+require('./routes')(app);
 
-var app = express();
+var server = require('http').createServer(app);
 
-var Config = require('./config');
-var configuration = new Config();
-configuration.init(app, express, passport, mongoose);
-
-require('./routes')(app, mongoose, passport);
-
-var server = http.createServer(app);
 server.listen(process.env.PORT || 3000, function(){
   console.log('server started');
 });

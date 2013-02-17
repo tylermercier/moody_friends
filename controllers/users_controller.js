@@ -1,37 +1,32 @@
-module.exports = function(app, userModel){
-  function Controller() {}
+var Models = require('../models/');
 
-  Controller.prototype.index = function(req, res) {
-    userModel.find({}, function(err, users){
+module.exports = {
+  index: function(req, res) {
+    Models.user.find({}, function(err, users){
       res.render('users/index.jade', {
         users: users
       });
     });
-  }
-
-  Controller.prototype.show = function(req, res){
-    userModel.findById(req.params.id, function(err, user){
+  },
+  show: function(req, res){
+    Models.user.findById(req.params.id, function(err, user){
       res.render('users/show.jade', {
         user: user
       });
     });
-  }
-
-  Controller.prototype.new = function(req, res){
+  },
+  new: function(req, res){
     res.render('users/new.jade');
-  }
-
-  Controller.prototype.create = function(req, res){
-    var user = new userModel();
+  },
+  create: function(req, res){
+    var user = new Models.user();
     user.name = req.param('name');
     user.date = new Date();
     user.save(function(error) {
       if (error) {
-        console.log('error saving userModel: ' + error);
+        console.log('error saving Models.user: ' + error);
       }
     });
     res.redirect('/users');
   }
-
-  return new Controller();
 };

@@ -1,13 +1,10 @@
-module.exports = function(mongoose) {
-  var collection = 'users';
-  var Schema = mongoose.Schema;
-  var ObjectId = Schema.ObjectId;
+var mongoose = require('mongoose');
 
-  var schema = new Schema({
-    author: ObjectId,
-    name: String,
-    date: Date
-  });
+var collection = 'users';
+var schema = new mongoose.Schema({
+  author: mongoose.Schema.ObjectId,
+  name: String,
+  date: Date
+});
 
-  return mongoose.model(collection, schema);
-};
+module.exports = mongoose.model(collection, schema);

@@ -1,10 +1,9 @@
-module.exports = function(app, twitterClient){
-  var generateFeed = require('../models/feed').generateFeed;
-  var Update = require('../models/update');
+var Update = require('../models/update');
+var twitterClient = require('../lib/client');
+var generateFeed = require('../models/feed').generateFeed;
 
-  function Controller() {}
-
-  Controller.prototype.index = function(request, response) {
+module.exports = {
+  index: function(request, response) {
     var client = twitterClient.create(request);
     var tweets = client.get('statuses/home_timeline', function(err, tweets) {
       var feed = _.map(tweets, function(tweet) {
@@ -13,9 +12,8 @@ module.exports = function(app, twitterClient){
 
       return response.send(feed);
     });
-  };
-
-  Controller.prototype.feed = function(request, response) {
+  },
+  feed: function(request, response) {
     console.log(request.body);
 
     var accessToken = request.body.oauth_token || "";
@@ -28,7 +26,5 @@ module.exports = function(app, twitterClient){
     var feedJSON = client.get('statuses/home_timeline', { count: 200 }, function(err, tweets) {
       return response.send(new generateFeed(tweets));
     });
-  };
-
-  return new Controller();
+  }
 };

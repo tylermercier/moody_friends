@@ -1,15 +1,14 @@
-module.exports = function(app, mongoose, passport) {
+var passport = require('passport');
+var Models = require('./models/');
+var apiController = require('./controllers/api_controller');
+var usersController = require('./controllers/users_controller');
 
-  var userModel = require('./models/user')(mongoose);
-  var twitterClient = require('./lib/client');
-
-  var apiController = require('./controllers/api_controller')(app, twitterClient);
-  var usersController = require('./controllers/users_controller')(app, userModel);
+module.exports = function(app) {
 
   app.get('/', function(request, response) {
-    userModel.find({}, function(err, docs) {
+    Models.user.find({}, function(err, users) {
       response.render('index', {
-        users: docs
+        users: users
       });
     });
   });
