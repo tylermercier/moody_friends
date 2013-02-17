@@ -4,7 +4,7 @@ var express = require('express')
 module.exports = function(app) {
   var rootPath = path.dirname(process.mainModule.filename);
 
-  app.set('views', rootPath + '/views');
+  app.set('views', rootPath + '/app/views');
   app.set('view engine', 'jade');
 
   app.use(express.cookieParser());

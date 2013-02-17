@@ -1,7 +1,7 @@
 var passport = require('passport');
-var Models = require('./models/');
-var apiController = require('./controllers/api_controller');
-var usersController = require('./controllers/users_controller');
+var Models = require('./app/models/');
+var apiController = require('./app/controllers/api_controller');
+var usersController = require('./app/controllers/users_controller');
 
 module.exports = function(app) {
 

@@ -1,4 +1,4 @@
-var sentiment = require('../lib/sentiment');
+var sentiment = require('../../lib/sentiment');
 
 exports = module.exports = Update;
 

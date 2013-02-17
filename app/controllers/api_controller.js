@@ -1,5 +1,5 @@
 var Update = require('../models/update');
-var twitterClient = require('../lib/client');
+var twitterClient = require('../../lib/client');
 var generateFeed = require('../models/feed').generateFeed;
 
 module.exports = {

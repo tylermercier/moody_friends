@@ -1,5 +1,5 @@
 var _ = require('underscore');
-var sentiment = require('../lib/sentiment');
+var sentiment = require('../../lib/sentiment');
 
 // Get average sentiment for group user tweets.
 // Order by average sentiment.

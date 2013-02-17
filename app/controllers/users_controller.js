@@ -25,8 +25,9 @@ module.exports = {
     user.save(function(error) {
       if (error) {
         console.log('error saving Models.user: ' + error);
+        return res.render('users/new', { errors: error.errors, user: user });
       }
+      return res.redirect('/users');
     });
-    res.redirect('/users');
   }
 };
